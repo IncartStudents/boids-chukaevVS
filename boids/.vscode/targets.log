@@ -5,12 +5,13 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Fri Jul 08 19:58:45 2022
+# Make data base, printed on Sat Jul 09 10:36:20 2022
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -30,8 +31,7 @@ SYSTEMROOT = C:\Windows
 # environment
 PROCESSOR_LEVEL = 23
 # environment
-PSM 
-ODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
 # environment
 GNUPLOT_LIB = D:\gnuplot\demo;D:\gnuplot\demo\games;D:\gnuplot\share
 # default
@@ -39,9 +39,11 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11508_BUIPQOTBWAUJXTGE
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7668_OMYIXPNQEDQIXBOS
 # environment
 VS160COMCOMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -91,7 +93,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11508
+VSCODE_PID = 7668
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -99,7 +101,7 @@ VSCODE_PID = 11508
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"4165c719fdf7a78444ed970b4565033b.ru","_translationsConfigFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\4165c719fdf7a78444ed970b4565033b.ru\\tcf.json","_cacheRoot":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\4165c719fdf7a78444ed970b4565033b.ru","_resolvedLanguagePackCoreLocation":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\4165c719fdf7a78444ed970b4565033b.ru\\92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9","_corruptedFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\4165c719fdf7a78444ed970b4565033b.ru\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"0c710195abefcb157427091a54303bfc.ru","_translationsConfigFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru\\tcf.json","_cacheRoot":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru","_resolvedLanguagePackCoreLocation":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru\\92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9","_corruptedFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVECONSUMER = C:\Users\vladc\OneDrive
 # default
@@ -120,7 +122,8 @@ COMSPEC = C:\Windows\system32\cmd.exe
 WINDIR = C:\Windows
 # environment
 MAKELEVEL := 0
-# default
+# def 
+ault
 MAKE = $(MAKE_COMMAND)
 # environment
 PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\ProgramData\chocolatey\bin;C:\Program Files\FFmpeg\bin;C:\Program Files (x86)\dotnet\;C:\Program Files\dotnet\;C:\Program Files\CMake\bin;C:\msys64\mingw64\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\vladc\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\vladc\AppData\Local\Programs\Python\Python310\;C:\Users\vladc\AppData\Local\Microsoft\WindowsApps;C:\Users\vladc\AppData\Local\GitHubDesktop\bin;D:\heroku\bin;C:\opencv\build\x64\vc15\bin;D:\PyCharm Community Edition 2021.3.2\bin;;C:\Program Files\FFmpeg\bin;
@@ -156,8 +159,6 @@ USERDOMAIN = DESKTOP-MRMF7RQ
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
-# environment
-__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
 # environment
@@ -192,7 +193,6 @@ TEMP = C:\Users\vladc\AppData\Local\Temp
 VSCODE_IPC_HOOK = \\.\pipe\2d0e1ef419d1d496f20c58b985da3387-1.69.0-main-sock
 # default
 .RECIPEPREFIX := 
- 
 # automatic
 <F = $(notdir $<)
 # default
@@ -208,8 +208,7 @@ PROCESSOR_REVISION = 6001
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=97/1024=9%, Rehash=0, Colli 
-sions=9/127=7%
+# Load=98/1024=10%, Rehash=0, Collisions=10/128=8%
 
 # Pattern-specific Variable Values
 
@@ -217,7 +216,7 @@ sions=9/127=7%
 
 # Directories
 
-# . (key d:/pls_boids, mtime 1657292246): 7 files, no impossibilities.
+# . (key d:/pls_boids, mtime 1657298173): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -303,6 +302,6 @@ link:
 # strcache performance: lookups = 23 / hit rate = 47%
 # hash-table stats:
 # Load=12/8192=0%, Rehash=0, Collisions=0/23=0%
-# Finished Make data base on Fri Jul 08 19:58:45 2022
+# Finished Make data base on Sat Jul 09 10:36:20 2022
 
  

@@ -1,14 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 class Bird {
     public:
         Bird(){
             x = rand() % 700 + 0;
             y = rand() % 500 + 0;
-            dx = 3;
-            dy = -3;
+            dx = rand() % 3 + (-3);
+            dy = rand() % 3 + (-3);
         
             triangle.setRadius(15);
             triangle.setPointCount(3);
@@ -25,19 +26,11 @@ class Bird {
             tempX = x + dx;
             tempY = y + dy;
 
-            if (tempY <= 0) {
+            if (tempY <= 0 || tempY > 570) {
                 dy *= -1;
             }
 
-            if (tempX > 750) {
-                dx *= -1;
-            }
-
-            if (tempY > 570) {
-                dy *= -1;
-            }
-
-            if (tempX < 0) {
+            if (tempX > 750 || tempX < 0) {
                 dx *= -1;
             }
         }
@@ -46,7 +39,10 @@ class Bird {
             checkBorders();
             x += dx;
             y += dy;
-            triangle.setPosition(x, y);
+            triangle.setPosition(sf::Vector2f(x, y));
+        }
+        void setX(float newX) {
+            x = newX;
         }
 
     private:
@@ -57,12 +53,19 @@ class Bird {
 
 int main()
 {
+    srand(time(0));
     int height = 600;
     int width = 800;
     sf::RenderWindow window(sf::VideoMode(width, height), "Boids");
     window.setFramerateLimit(60);
-    
-    Bird boid;
+
+    int countOfBoids = 20; // Set count of boids
+
+    Bird *flock = new Bird[countOfBoids];
+    for (int i = 0; i < countOfBoids; i++)
+    {
+        flock[i] = Bird();
+    }
 
     while (window.isOpen())
     {
@@ -73,12 +76,19 @@ int main()
                 window.close();
         }
 
-        boid.moveBird();
+        for (int i = 0; i < countOfBoids; i++)
+        {
+            flock[i].moveBird();
+        }
+        
     
         window.clear();
-        window.draw(boid.getBird());
+        for (int i = 0; i < countOfBoids; i++)
+        {
+            window.draw(flock[i].getBird());
+        }
         window.display();
     }
-
+    delete[] flock;
     return 0;
 }
