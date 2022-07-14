@@ -11,8 +11,7 @@ class Bird {
             y = rand() % 500 + 0;
             dx = rand() % 3 + (-3);
             dy = rand() % 3 + (-3);
-            radius = 50;
-            accelerationVec = sf::Vector2f(dx, dy);
+            accelerationVec = sf::Vector2f(dx - x, dy - y);
         
             triangle.setRadius(15);
             triangle.setPointCount(3);
@@ -49,9 +48,6 @@ class Bird {
             x = newX;
         }
 
-        void renderVec(sf::Vector2f position) {
-        }
-
         sf::Vector2f getPos() {
             return sf::Vector2f(x, y);
         }
@@ -61,18 +57,30 @@ class Bird {
         }
 
         sf::Vector2f getAccelerationVec() {
-            return sf::Vector2f(dx, dy);
+            return sf::Vector2f(dx - x, dy - y);
         }
 
         void setAccelerationVec(sf::Vector2f newAcceleration) {
-            dx = newAcceleration.x;
-            dy = newAcceleration.y;
+            accelerationVec += newAcceleration;
+            float dist = sqrt(pow(dx - x, 2) + pow(dy - y, 2));
+            accelerationVec = accelerationVec / dist;
+
+            dx = (dx + accelerationVec.x / -64);
+            dy = (dy + accelerationVec.y / -64);
+
         }
 
+        void normalizeAccelertion() {
+            while(dx > 3 && dy > 3) {
+                dx -= 1;
+                dy -= 1;
+            }
+        }
 
     private:
         float x, y, dx, dy, tempX, tempY;
         float radius;
+        float normDx, normDy;
         sf::Vector2f accelerationVec;
         sf::CircleShape triangle;
     
@@ -82,16 +90,13 @@ void calcDist();
 
 int main()
 {
-    // sf::CircleShape rad(50, 300);
-    // rad.setPosition(100, 100);
-    // rad.setFillColor(sf::Color::White);
     srand(time(0));
     int height = 600;
     int width = 800;
     sf::RenderWindow window(sf::VideoMode(width, height), "Boids");
     window.setFramerateLimit(60);
 
-    int countOfBoids = 50; // Set count of boids
+    int countOfBoids = 30; // Set count of boids
 
     Bird *flock = new Bird[countOfBoids];
     for (int i = 0; i < countOfBoids; i++)
@@ -108,7 +113,7 @@ int main()
                 window.close();
         }
 
-        for (int i = 0; i < countOfBoids; i++) {
+        for (int i = 0; i < countOfBoids; i++) { // Rule of SEPARATION 
             std::vector<sf::Vector2f> vectors;
             int birdsInRadius = 0;
             Bird mainBird = flock[i];
@@ -118,16 +123,22 @@ int main()
                     float dist = sqrt(pow(mainBird.getPos().x - flock[j].getPos().x, 2) + 
                     pow(mainBird.getPos().y - flock[j].getPos().y, 2));
                     
-                    if (dist < 50 && vectors.size() == 3) {
+                    if (dist < 200 && vectors.size() > 2) {
                         for (sf::Vector2f vec : vectors) {
                             vecOfAcceleration += vec;
                         }
-                    } else if (dist < 50) {
-                        vectors.push_back(flock[j].getPos());
+                    } else if (dist < 200) {
+                        vectors.push_back(sf::Vector2f(flock[j].getPos().x - mainBird.getPos().x, 
+                        flock[j].getPos().y - mainBird.getPos().y));
+                        
+                    } else {
+                        flock[i].normalizeAccelertion();
                     }
                 }
             }
-            flock[i].setAccelerationVec(vecOfAcceleration);
+            if(vectors.size() > 2) {
+                flock[i].setAccelerationVec(vecOfAcceleration);
+            }
         }
 
         for (int i = 0; i < countOfBoids; i++)
@@ -145,26 +156,4 @@ int main()
     }
     delete[] flock;
     return 0;
-}
-
-void calcDist(Bird *flock, int countOfBird) {
-    for (int i = 0; i < countOfBird; i++) {
-        std::vector<Bird> flockmates;
-        int birdsInRadius = 0;
-        Bird mainBird = flock[i];
-        for (int j = 0; j < countOfBird; j++) {
-            if (mainBird.getPos() != flock[j].getPos()) {
-                float dist = sqrt(pow(mainBird.getPos().x - flock[j].getPos().x, 2) - 
-                pow(mainBird.getPos().y - flock[j].getPos().y, 2));
-
-                if (dist < 50 && birdsInRadius == 3) {
-                    mainBird.setColor();
-                } else if (dist < 50) {
-                    birdsInRadius++;
-                }
-            }
-            
-        }
-
-    }
 }

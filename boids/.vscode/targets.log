@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Wed Jul 13 16:30:24 2022
+# Make data base, printed on Thu Jul 14 15:55:50 2022
 
 # Variables
 
@@ -39,7 +40,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_14772_METUGXULNQHXZWOG
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12356_KLSUBREHBXMSGCCK
 # environment
 VS160COMCOMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\
 # environment
@@ -55,7 +56,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\vladc\AppData\Roaming\Code\CachedData\92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9
+VSCODE_CODE_CACHE_PATH = C:\Users\vladc\AppData\Roaming\Code\CachedData\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
 # environment
 LANG = C
 # default
@@ -80,8 +81,7 @@ SYSTEMC = C:\Users\vladc\Desktop\systemc-2.3.3\msvc10
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files (x86)
-#  
-environment
+# environment
 MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
@@ -94,7 +94,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 14772
+VSCODE_PID = 12356
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -102,7 +102,7 @@ VSCODE_PID = 14772
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"0c710195abefcb157427091a54303bfc.ru","_translationsConfigFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru\\tcf.json","_cacheRoot":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru","_resolvedLanguagePackCoreLocation":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru\\92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9","_corruptedFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\0c710195abefcb157427091a54303bfc.ru\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"f1271d778ec77496b280bb178e5ed275.ru","_translationsConfigFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\tcf.json","_cacheRoot":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru","_resolvedLanguagePackCoreLocation":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVECONSUMER = C:\Users\vladc\OneDrive
 # default
@@ -190,7 +190,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\vladc\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\2d0e1ef419d1d496f20c58b985da3387-1.69.0-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\2d0e1ef419d1d496f20c58b985da3387-1.69.1-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -206,7 +206,8 @@ SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 6001
 # environment
-PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, Authentic 
+AMD
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=10/128=8%
 
@@ -216,7 +217,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 
 # Directories
 
-# . (key d:/pls_boids, mtime 1657631439): 7 files, no impossibilities.
+# . (key d:/pls_boids, mtime 1657777878): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -302,6 +303,6 @@ link:
 # strcache performance: lookups = 23 / hit rate = 47%
 # hash-table stats:
 # Load=12/8192=0%, Rehash=0, Collisions=0/23=0%
-# Finished Make data base on Wed Jul 13 16:30:24 2022
+# Finished Make data base on Thu Jul 14 15:55:50 2022
 
  
