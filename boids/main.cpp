@@ -14,10 +14,11 @@ class Bird {
             accelerationVec = sf::Vector2f(dx - x, dy - y);
         
             triangle.setRadius(15);
-            triangle.setPointCount(3);
+            triangle.setPointCount(300);
             triangle.setOutlineColor(sf::Color::Blue);
             triangle.setOutlineThickness(2.f);
             triangle.setFillColor(sf::Color::Green);
+            
         }
 
         sf::CircleShape getBird(){
@@ -60,6 +61,10 @@ class Bird {
             return sf::Vector2f(dx - x, dy - y);
         }
 
+        sf::Vector2f getAccelerationPoint() {
+            return sf::Vector2f(dx, dy);
+        }
+
         void setAccelerationVec(sf::Vector2f newAcceleration) {
             accelerationVec += newAcceleration;
             float dist = sqrt(pow(dx - x, 2) + pow(dy - y, 2));
@@ -75,6 +80,20 @@ class Bird {
                 dx -= 1;
                 dy -= 1;
             }
+        }
+
+        sf::Vertex getDirection() {
+            sf::Vertex direction[] = {sf::Vertex(sf::Vector2f(x, y)), sf::Vertex(sf::Vector2f(dx, dy))};
+
+            return *direction;
+        }
+
+        float getDx() {
+            return dx;
+        }
+
+        float getDy() {
+            return dy;
         }
 
     private:
@@ -151,6 +170,13 @@ int main()
         for (int i = 0; i < countOfBoids; i++)
         {
             window.draw(flock[i].getBird());
+
+            sf::VertexArray dir(sf::Lines, 2); // Func that draw the direction of each boid
+            dir[0].position = sf::Vector2f(flock[i].getPos().x + flock[i].getAccelerationPoint().x * 10,
+                flock[i].getPos().y + flock[i].getAccelerationPoint().y * 10);
+            dir[1].position = sf::Vector2f(flock[i].getPos().x + 15, flock[i].getPos().y + 15);
+
+            window.draw(dir);
         }
         window.display();
     }

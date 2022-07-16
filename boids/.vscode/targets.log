@@ -5,9 +5,8 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu Jul 14 15:55:50 2022
+# Make data base, printed on Fri Jul 15 20:26:56 2022
 
 # Variables
 
@@ -40,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12356_KLSUBREHBXMSGCCK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15104_FNHWHTQNTHZOYXIW
 # environment
 VS160COMCOMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\
 # environment
@@ -94,7 +93,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 12356
+VSCODE_PID = 15104
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -102,7 +101,8 @@ VSCODE_PID = 12356
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"f1271d778ec77496b280bb178e5ed275.ru","_translationsConfigFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\tcf.json","_cacheRoot":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru","_resolvedLanguagePackCoreLocation":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"f1271d778ec77496b280bb178e5ed275.ru","_translationsConfigFile":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\tcf.json","_cacheRoot":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru","_resolvedLanguagePackCoreLocation":"C:\\Users\\vladc\\AppData\\Roaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"C:\\Users\\vladc\\AppData\\R 
+oaming\\Code\\clp\\f1271d778ec77496b280bb178e5ed275.ru\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVECONSUMER = C:\Users\vladc\OneDrive
 # default
@@ -206,8 +206,7 @@ SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 6001
 # environment
-PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, Authentic 
-AMD
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=10/128=8%
 
@@ -217,7 +216,7 @@ AMD
 
 # Directories
 
-# . (key d:/pls_boids, mtime 1657777878): 7 files, no impossibilities.
+# . (key d:/pls_boids, mtime 1657871762): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -280,6 +279,7 @@ link:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 7):
 	g++ main.o -o main -L"C:\libraries\SFML-2.5.1\lib" -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows
 
@@ -303,6 +303,6 @@ link:
 # strcache performance: lookups = 23 / hit rate = 47%
 # hash-table stats:
 # Load=12/8192=0%, Rehash=0, Collisions=0/23=0%
-# Finished Make data base on Thu Jul 14 15:55:50 2022
+# Finished Make data base on Fri Jul 15 20:26:56 2022
 
  
