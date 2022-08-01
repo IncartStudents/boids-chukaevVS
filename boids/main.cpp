@@ -81,47 +81,20 @@ class Bird {
 
         void setAccelerationAlign(sf::Vector2f newAcceleration)
         {
-            float speed = sqrt(pow(dx - x, 2) + pow(dy - y, 2));
-
-            //newAcceleration = newAcceleration / speed; // Limiting speed
-
-            // dx = (dx + newAcceleration.x * 0.01);
-            // dy = (dy + newAcceleration.y * 0.01);
 
             dx += (newAcceleration.x - dx) * -0.05;
             dy += (newAcceleration.y - dy) * -0.05;
         }
 
-        void limitSpeed()
+        void limitSpeed(int limit)
         {
-            int speedLimit = 6;
+            int speedLimit = limit;
             float speed = sqrt(pow(dx, 2) + pow(dy, 2));
 
             if(speed > speedLimit)
             {
                 dx = dx / speed * speedLimit;
                 dy = dy / speed * speedLimit;
-            }
-        }
-
-        void normalizeAccelertion() {
-            while((dx > 6 || dx < -6) && (dy > 6 || dy < -6)) {
-                if (dx > 6)
-                {
-                    dx -= 1;
-                }
-                if (dx < -6)
-                {
-                    dx += 1;
-                }
-                if (dy > 6)
-                {
-                    dy -= 1;
-                }
-                if (dy < -6)
-                {
-                    dy += 1;
-                }
             }
         }
 
@@ -140,11 +113,11 @@ class Bird {
         }
 
         void setDx(float newDx) {
-            dx += (newDx - dx) * 0.5;
+            dx += (newDx - dx) * -4;
         }
 
         void setDy(float newDy) {
-            dy += (newDy - dy) * 0.5;
+            dy += (newDy - dy) * -4;
         }
 
     private:
@@ -176,11 +149,12 @@ void ruleOfSeparation(int countOfBoids, Bird flock[])
                     }
                 } 
                 else {
-                    flock[i].normalizeAccelertion();
+                    flock[i].limitSpeed(12);
                 }
             }
         }
         flock[i].setAccelerationVecSep(vecOfAcceleration);
+        flock[i].limitSpeed(12);
     }
 }
 
@@ -204,7 +178,7 @@ void ruleOfCohesion(int countOfBoids, Bird flock[])
                     }
                 } 
                 else {
-                    flock[i].normalizeAccelertion();
+                    flock[i].limitSpeed(6);
                 }
             }
         }
@@ -214,83 +188,39 @@ void ruleOfCohesion(int countOfBoids, Bird flock[])
 
 void ruleOfAlignment(int countOfBoids, Bird flock[])
 {
-     for (int i = 0; i < countOfBoids; i++) {
+    for (int i = 0; i < countOfBoids; i++)
+    {
         float avgDx = 0;
         float avgDy = 0;
-        sf::Vector2f avgVelocity = flock[i].getAccelerationVec();
-        int numOfNeighbors = 0;
-        float angle = -0.01; // Some angle
-        std::vector<Bird> neighbros;
+        int numOfNeighbros = 0;
 
-        std::vector<sf::Vector2f> vectors;
-        int birdsInRadius = 0;
-        Bird mainBird = flock[i];
-        sf::Vector2f vecOfAcceleration = mainBird.getAccelerationVec();
-        for (int j = 0; j < countOfBoids; j++) {
-            if (mainBird.getPos() != flock[j].getPos()) {
-                
-                float dist = sqrt(pow(mainBird.getPos().x - flock[j].getPos().x, 2) + 
-                pow(mainBird.getPos().y - flock[j].getPos().y, 2));
-
-                if (dist < 200) {
-                    neighbros.push_back(flock[j]);
-                    numOfNeighbors++;
-                    avgVelocity += flock[j].getAccelerationVec();
-
-
-
-                    float cosAngle = (flock[i].getAccelerationVec().x * flock[j].getAccelerationVec().x + 
-                        flock[i].getAccelerationVec().y * flock[j].getAccelerationVec().y) / 
-                        (sqrt(pow(flock[i].getAccelerationVec().x, 2) + pow(flock[i].getAccelerationVec().y, 2)) * 
-                        sqrt(pow(flock[j].getAccelerationVec().x, 2) + pow(flock[j].getAccelerationVec().y, 2)));
-
-                    
-                    // if (cosAngle < 1 && cosAngle > 0.996195)
-                    // {
-                    //     // flock[j].setDx(cos(angle) * flock[j].getDx() - sin(angle) * flock[j].getDy());
-                    //     // flock[j].setDy(sin(angle) * flock[j].getDx() + cos(angle) * flock[j].getDy());
-
-                    //     // flock[j].setDx(cos(angle) * flock[j].getAccelerationVec().x -
-                    //     //     sin(angle) * flock[j].getAccelerationVec().y);
-                    //     // flock[j].setDy(sin(angle) * flock[j].getAccelerationVec().x +
-                    //     //     cos(angle) * flock[j].getAccelerationVec().y);
-
-                    //     flock[j].setAccelerationAlign(sf::Vector2f(cos(angle) * flock[j].getAccelerationVec().x -
-                    //         sin(angle) * flock[j].getAccelerationVec().y, 
-                    //         sin(angle) * flock[j].getAccelerationVec().x +
-                    //         cos(angle) * flock[j].getAccelerationVec().y));
-                    //     flock[j].limitSpeed();
-                    // }
-                } 
-            }
-        }
-        if (neighbros.size() > 0)
+        for (int j = 0; j < countOfBoids; j++)
         {
-            bool flag = false;
-            for (Bird bird : neighbros)
+            if (flock[i].getPos() != flock[j].getPos())
             {
-                Bird copyMain = flock[i];
-                Bird copyNeighbor = bird;
+                float dist = sqrt(pow(flock[i].getPos().x - flock[j].getPos().x, 2) + 
+                pow(flock[i].getPos().y - flock[j].getPos().y, 2));
 
-                copyMain.limitSpeed();
-                bird.limitSpeed();
-                if (copyMain.getAccelerationVec() == copyNeighbor.getAccelerationVec())
+                if (dist < 800)
                 {
-                    flag = true;
+                    avgDx += flock[j].getDx();
+                    avgDy += flock[j].getDy();
+
+                    numOfNeighbros++;
                 }
             }
+        }
 
-            if(flag)
-            {
-                flock[i].limitSpeed();
-            } else {
-                avgVelocity.x = avgVelocity.x / numOfNeighbors;
-                avgVelocity.y = avgVelocity.y / numOfNeighbors;
+        if (numOfNeighbros)
+        {
+            avgDx = avgDx / numOfNeighbros;
+            avgDy = avgDy / numOfNeighbros;
 
-                flock[i].setAccelerationAlign(avgVelocity);
-            }
-            
-        } else flock[i].limitSpeed();
+            flock[i].setDx(avgDx);
+            flock[i].setDy(avgDy);
+            flock[i].limitSpeed(6);
+        }
+        //flock[i].limitSpeed(6);
     }
 }
 
@@ -319,8 +249,8 @@ int main()
                 window.close();
         }
 
-        // ruleOfSeparation(countOfBoids, flock);
-        // ruleOfCohesion(countOfBoids, flock);
+        ruleOfSeparation(countOfBoids, flock);
+        ruleOfCohesion(countOfBoids, flock);
         ruleOfAlignment(countOfBoids, flock);
 
         for (int i = 0; i < countOfBoids; i++)
@@ -328,7 +258,6 @@ int main()
             flock[i].moveBird();
         }
         
-    
         window.clear();
         for (int i = 0; i < countOfBoids; i++)
         {
